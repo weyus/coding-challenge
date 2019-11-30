@@ -1,5 +1,5 @@
 {
-  "name": "codeing-challenge",
+  "name": "coding-challenge",
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",

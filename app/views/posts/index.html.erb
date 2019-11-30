@@ -1,1 +1,20 @@
-<!-- View for showing all `Post` -->
+<% if @posts.empty? %>
+  <h3>There are no posts to show</h3>
+<% else %>
+     <ul id="post-list">
+       <% Post.all.each do |post| %>
+            <li class="post">
+              <div class="title">
+                <%= post.title %>
+              </div>
+              <div class="body">
+                <%= post.body.length > 25 ? "#{post.body[0..24]}..." : post.body %>
+              </div>
+              <%= link_to "Comments: #{post.comments.count}", post, class: "comment-link" %>
+            </li>
+       <% end %>
+     </ul>
+<% end %>
+<div id="button-container">
+  <%= button_to 'New Post', new_post_path, method: :get, :class => "button" %>
+</div>

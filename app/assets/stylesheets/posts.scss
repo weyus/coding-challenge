@@ -1,3 +1,74 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: green;
+  font-family: Arial;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2%;
+
+  ul#post-list {
+    list-style: none;
+    width: 20%;
+    padding: 0;
+
+    .post {
+      text-align: left;
+      margin-bottom: 15%;
+    }
+
+    .comment-link {
+      float: right;
+    }
+  }
+
+  .field {
+    margin: 10% 0;
+  }
+
+  label {
+    width: 4em;
+    float: left;
+    text-align: right;
+    margin-right: 0.5em;
+    display: block
+  }
+
+  input, textarea {
+    width: 30em;
+  }
+
+  input[type="submit"] {
+    display: block;
+    float: right;
+    width: 20em;
+    margin-top: 2%;
+
+    &[name="commit"] {
+      width: 10em;
+    }
+  }
+
+  .display {
+    text-align: left;
+    margin-bottom: 3%;
+    width: 20%;
+  }
+
+  .title {
+    font-size: xx-large;
+    display: inline-block;
+    margin-bottom: 3%;
+  }
+}
+
+
+

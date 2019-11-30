@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <title>CodeingChallenge</title>
+    <title>CareerPlug Coding Challenge</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="header">
+      <h1>CAREER PLUG</h1>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

@@ -1,1 +1,11 @@
-<!-- View for showing a single `Post` -->
+<div class="display">
+  <div class="title">
+    <%= @post.title %>
+  </div>
+  <div class="body">
+    <%= @post.body %>
+  </div>
+  <%= button_to 'Delete Post', @post, method: :delete %>
+</div>
+
+
