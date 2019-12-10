@@ -5,7 +5,16 @@ class PostsController < ApplicationController
   before_action :get_post, only: [:show, :destroy]
 
   def index
-    @posts = Post.all
+    search_params = params[:search]
+
+    if search_params.present?
+      term = search_params[:term]
+      if term.present?
+        @posts = Post.where("lower(title) LIKE ? OR lower(body) LIKE ?", "%#{term.downcase}%", "%#{term.downcase}%")
+      end
+    end
+
+    @posts ||= Post.all
   end
 
   def new
@@ -13,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(new_post_params)
 
     if @post.save
       redirect_to posts_path
@@ -37,8 +46,8 @@ class PostsController < ApplicationController
     @post ||= Post.find(params[:id])
   end
 
-  #Limit params that can be submitted
-  def post_params
+  #Limit params that can be submitted for post creation
+  def new_post_params
     params.require(:post).permit(:title, :body)
   end
 end

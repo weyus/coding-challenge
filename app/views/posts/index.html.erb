@@ -1,8 +1,12 @@
+<div class="search">
+  <%= render 'search_form' %>
+</div>
 <% if @posts.empty? %>
   <h3>There are no posts to show</h3>
 <% else %>
-     <ul id="post-list">
-       <% Post.all.each do |post| %>
+  <h3>Current posts</h3>
+    <ul id="post-list">
+       <% @posts.each do |post| %>
             <li class="post">
               <div class="title">
                 <%= post.title %>
