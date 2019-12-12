@@ -5,10 +5,24 @@
   <div class="title">
     <%= @post.title %>
   </div>
+
   <div class="body">
     <%= @post.body %>
   </div>
-  <%= button_to 'Delete Post', @post, method: :delete %>
+
+  <div class="comments" data-controller="comments">
+    <h3>Comments</h3>
+    <ul data-target="comments.commentList" id="comment-list">
+      <% @post.comments.each do |comment| %>
+        <%= render 'comments/comment', comment: comment %>
+      <% end %>
+    </ul>
+    <%= render 'comments/new', comment: @post.comments.new %>
+  </div>
+
+  <div id="delete-post">
+    <%= button_to 'Delete Post', @post, method: :delete %>
+  </div>
 </div>
 
 

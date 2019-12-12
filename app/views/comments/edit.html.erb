@@ -1,0 +1,5 @@
+<%= form_with model: @comment, url: [@post, @comment], data: {type: "html", action: "ajax:success->comments#update"}, id: "edit-comment" do |form| %>
+  <%= form.text_area :text, data: {target: "comments.text"} %>
+  <%= link_to "Cancel", nil, data: {action: "click->comments#cancelEdit"}, href: "", class: "cancel" %>
+  <%= form.submit "Save" %>
+<% end %>

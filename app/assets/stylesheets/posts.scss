@@ -17,7 +17,6 @@
 
   ul#post-list {
     list-style: none;
-    width: 30%;
     padding: 0;
 
     .post {
@@ -46,7 +45,7 @@
     width: 30em;
   }
 
-  input[type="submit"] {
+  input[type="submit"], button[type="submit"] {
     display: block;
     float: right;
     width: 20em;
@@ -55,12 +54,22 @@
     &[name="commit"] {
       width: 10em;
     }
+
+    &[value="Edit"] {
+      margin: 0;
+      width: 10em;
+    }
+
+    &[value="Delete"] {
+      margin: 0 1%;
+      width: 10em;
+    }
   }
 
   .display {
     text-align: left;
     margin: 2% 0;
-    width: 30%;
+    width: 50%;
   }
 
   .title {
@@ -77,6 +86,46 @@
   .note {
     margin-top: 2.5%;
     font-size: small;
+  }
+
+  #new-comment {
+    margin-top: 5%;
+
+    textarea {
+      width: 70%;
+      resize: none;
+    }
+
+    input[name="commit"] {
+      display: inline;
+      width: 25%;
+    }
+  }
+
+  #comment-list {
+    padding-left: 2%;
+    list-style-type: none;
+
+    .comment {
+      margin: 3% 0;
+
+      form {
+        display: inline;
+      }
+    }
+
+    .cancel {
+      margin: 2% 0 0 1%;
+      float: right;
+      text-decoration: none;
+    }
+  }
+
+
+  #delete-post {
+    margin-top: 10%;
+    display: inline-block;
+    width: 100%;
   }
 }
 

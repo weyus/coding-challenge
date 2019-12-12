@@ -1,24 +1,28 @@
 <div class="search">
   <%= render 'search_form' %>
 </div>
+
 <% if @posts.empty? %>
   <h3>There are no posts to show</h3>
 <% else %>
-  <h3>Current posts</h3>
+  <div class="display">
+    <h3>Current posts</h3>
     <ul id="post-list">
-       <% @posts.each do |post| %>
+      <% @posts.each do |post| %>
             <li class="post">
               <div class="title">
                 <%= post.title %>
               </div>
               <div class="body">
-                <%= post.body.length > 25 ? "#{post.body[0..24]}..." : post.body %>
+                <%= post.body.length > @text_size ? "#{post.body[0..(@text_size - 1)]}..." : post.body %>
               </div>
               <%= link_to "Comments: #{post.comments.count}", post, class: "comment-link" %>
             </li>
        <% end %>
-     </ul>
+    </ul>
+  </div>
 <% end %>
+
 <div id="button-container">
-  <%= button_to 'New Post', new_post_path, method: :get, :class => "button" %>
+  <%= button_to 'New Post', new_post_path, method: :get, class: "button" %>
 </div>
