@@ -10,7 +10,7 @@
     <%= @post.body %>
   </div>
 
-  <div class="comments" data-controller="comments">
+  <div class="comments">
     <h3>Comments</h3>
     <ul data-target="comments.commentList" id="comment-list">
       <% @post.comments.each do |comment| %>

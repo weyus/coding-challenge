@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <title>CareerPlug Coding Challenge</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>CareerPlug Coding Challenge</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <div id="header">
-      <h1>CAREER PLUG</h1>
-    </div>
-    <div class="container">
-      <%= yield %>
-    </div>
-  </body>
+<body>
+<div id="header">
+  <h1>CAREER PLUG</h1>
+</div>
+<div class="container" data-controller="comments">
+  <div id="notice" data-target="comments.notice">
+    <%= flash[:notice] %>
+  </div>
+  <div id="alert" data-target="comments.alert">
+    <% if flash[:alert].present? %>
+      <%= flash[:alert] %>
+    <% end %>
+  </div>
+
+  <%= yield %>
+</div>
+</body>
 </html>

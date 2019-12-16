@@ -1,4 +1,7 @@
-<%= form_with model: comment, url: [@post, comment], data: {type: "html", action: "ajax:success->comments#add"}, id: "new-comment" do |form| %>
+<%= form_with model: comment,
+              url: [@post, comment],
+              data: {type: "html", action: "ajax:success->comments#add ajax:error->comments#displayErrors"},
+              id: "new-comment" do |form| %>
   <%= form.text_area :text, data: {target: "comments.text"} %>
   <%= form.submit "Add Comment" %>
 <% end %>

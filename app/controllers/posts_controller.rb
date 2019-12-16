@@ -25,8 +25,10 @@ class PostsController < ApplicationController
     @post = Post.new(new_post_params)
 
     if @post.save
+      flash[:notice] = 'Post successfully created'
       redirect_to posts_path
     else
+      flash[:alert] = display_errors(@post)
       render 'new'
     end
   end
@@ -35,8 +37,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
-    redirect_to posts_path
+    if @post.destroy
+      flash[:notice] = 'Post successfully deleted'
+      redirect_to posts_path
+    else
+      flash[:alert] = 'Error deleting post'
+      render 'show'
+    end
   end
 
   private

@@ -6,9 +6,9 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
 
     if @comment.save
-      render '_comment', locals: {comment: @comment}, layout: false
+      render '_comment', locals: {comment: @comment}, layout: false, status: :ok
     else
-      render text: "Error occurred during comment creation"
+      render html: display_errors(@comment), status: :internal_server_error
     end
   end
 
@@ -18,14 +18,18 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      render '_comment', locals: {comment: @comment}, layout: false
+      render '_comment', locals: {comment: @comment}, layout: false, status: :ok
     else
-      render text: "Error occurred during comment update"
+      render html: display_errors(@comment), status: :internal_server_error
     end
   end
 
   def destroy
-    render text: "Error occurred during comment delete" unless @comment.destroy
+    if @comment.destroy
+      render html: "Comment successfully deleted".html_safe, status: :ok
+    else
+      render html: display_errors("Error occurred deleting comment"), status: :internal_server_error
+    end
   end
 
   private

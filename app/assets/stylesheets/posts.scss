@@ -15,6 +15,14 @@
   align-items: center;
   padding-top: 2%;
 
+  #notice {
+    color: green;
+  }
+
+  #alert {
+    color: red;
+  }
+
   ul#post-list {
     list-style: none;
     padding: 0;

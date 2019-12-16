@@ -4,7 +4,7 @@
   <%= button_to "Delete", post_comment_path(comment.post, comment),
                 method: "delete",
                 class: "button",
-                form: {data: {type: "html", action: "ajax:success->comments#delete"}},
+                form: {data: {type: "html", action: "ajax:success->comments#delete ajax:error->comments#displayErrors"}},
                 remote: true %>
 
   <%= button_to "Edit", edit_post_comment_path(comment.post, comment),

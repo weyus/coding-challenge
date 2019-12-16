@@ -1,13 +1,15 @@
 import {Controller} from 'stimulus';
 
 export default class extends Controller {
-  static targets = ['commentList', 'text'];
+  static targets = ['commentList', 'text', 'notice', 'alert'];
 
   //Handler for comment add
   add(event) {
     let xhr = event.detail[2];
     this.commentListTarget.innerHTML += xhr.response.trim();
     this.textTarget.value = '';
+
+    this.displaySuccess('Comment successfully added');
   }
 
   //Handler for comment edit
@@ -42,11 +44,27 @@ export default class extends Controller {
     this.commentListTarget.removeChild(currentComment);
     hiddenComment.insertAdjacentHTML('afterend', xhr.response.trim());
     this.commentListTarget.removeChild(hiddenComment);
+
+    this.displaySuccess('Comment successfully updated');
   }
 
   //Handler for comment delete
   delete(event) {
     let currentComment = event.target.parentElement;
     this.commentListTarget.removeChild(currentComment);
+
+    this.displaySuccess('Comment successfully deleted');
+  }
+
+  displaySuccess(text) {
+    this.alertTarget.innerHTML = '';
+    this.noticeTarget.innerHTML = text;
+  }
+
+  //Handler for any errors
+  displayErrors(event) {
+    this.noticeTarget.innerHTML = '';
+    let xhr = event.detail[2];
+    this.alertTarget.innerHTML = xhr.response.trim();
   }
 }
